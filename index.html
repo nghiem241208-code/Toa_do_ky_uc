@@ -52,8 +52,7 @@ h1,h2,h3,h4,.brand-name{font-family:"Nunito","Be Vietnam Pro",sans-serif}
 .intro-icon{font-size:56px;margin-bottom:16px;animation: bounce 2s infinite ease-in-out;}
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 .intro-label{font-size:12px;letter-spacing:4px;color:var(--mint);font-weight:900;text-transform:uppercase;margin-bottom:8px;}
-.intro h1{font-size:clamp(36px,7vw,56px);margin:0 0 16px;line-height:1.1}
-.intro p{font-size:clamp(15px,2vw,18px);line-height:1.6;color:#cbd5e1;min-height:50px;margin-bottom:28px}
+.intro h1{font-size:clamp(36px,7vw,56px);margin:0 0 28px;line-height:1.1}
 .btn-start{
   border:0;background:linear-gradient(135deg, var(--mint) 0%, var(--emerald) 100%);
   color:white;padding:16px 32px;border-radius:50px;font-weight:900;font-size:16px;
@@ -105,21 +104,14 @@ h1,h2,h3,h4,.brand-name{font-family:"Nunito","Be Vietnam Pro",sans-serif}
 .search:focus{background:white;border-color:var(--emerald);box-shadow:0 0 0 3px rgba(5,150,105,0.1)}
 .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--muted)}
 
-.small-label{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.filter{
-  border:1px solid var(--line);background:white;color:var(--muted);
-  border-radius:30px;padding:6px 12px;font-size:11px;font-weight:700
-}
-.filter.active{background:var(--emerald);color:white;border-color:var(--emerald)}
-
 .side-menu{display:grid;gap:6px}
 .menu-btn{
   display:flex;align-items:center;gap:10px;text-align:left;
   padding:11px 12px;border:1px solid transparent;border-radius:14px;
-  background:transparent;color:var(--ink);font-weight:700;font-size:13px
+  background:transparent;color:var(--ink);font-weight:700;font-size:13px;
+  text-decoration:none;transition:all .2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.menu-btn:hover,.menu-btn.active{background:var(--mint-light);color:var(--emerald-dark);border-color:#a7f3d0}
+.menu-btn:hover,.menu-btn.active{background:var(--mint-light);color:var(--emerald-dark);border-color:#a7f3d0;transform:translateY(-2px)}
 .menu-icon{width:24px;font-size:18px;text-align:center}
 .count{margin-left:auto;background:white;border:1px solid var(--line);border-radius:20px;padding:2px 8px;font-size:11px;font-weight:800;color:var(--emerald)}
 .menu-btn.active .count{background:var(--emerald);color:white;border-color:var(--emerald)}
@@ -144,7 +136,7 @@ h1,h2,h3,h4,.brand-name{font-family:"Nunito","Be Vietnam Pro",sans-serif}
 .map-canvas{position:relative;width:100%}
 .map-image{display:block;width:100%;height:auto;pointer-events:none}
 
-/* VÙNG CHẠM TÀ HÌNH (INVISIBLE HOTSPOTS): Không màu viền, không che chữ, chỉ vô hình nhận thao tác chạm */
+/* VÙNG CHẠM TÀNG HÌNH (INVISIBLE HOTSPOTS): Không màu viền, không che chữ, chỉ vô hình nhận thao tác chạm */
 .hotspot-area {
   position: absolute;
   left: var(--x);
@@ -152,8 +144,8 @@ h1,h2,h3,h4,.brand-name{font-family:"Nunito","Be Vietnam Pro",sans-serif}
   width: var(--w);
   height: var(--h);
   transform: translate(-50%, -50%);
-  background: transparent; /* Hoàn toàn trong suốt */
-  border: none; /* Không viền che */
+  background: transparent;
+  border: none;
   cursor: pointer;
 }
 /* Hiệu ứng khi check-in xong: chỉ hiện nhẹ dấu tick xanh tinh tế ở góc nếu đã ghé thăm */
@@ -254,8 +246,6 @@ textarea.field{min-height:100px;resize:vertical}
 }
 .account-menu button:hover{background:var(--mint-light);color:var(--emerald-dark)}
 
-
-.intro-lang{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.3)}
 .figure{border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;aspect-ratio:4/3;display:grid;place-items:center}
 .figure img{width:100%;height:100%;object-fit:cover;display:block}
 .ph{text-align:center;color:var(--emerald-dark);padding:16px}
@@ -280,13 +270,11 @@ textarea.field{min-height:100px;resize:vertical}
 <body>
 
 <section class="intro" id="intro">
-  <button class="top-btn intro-lang" id="introLang">🌐 VI | en</button>
   <div class="intro-inner">
     <div class="intro-icon">🧭✨</div>
     <div class="intro-label" id="introLabel">Vibe Cần Thơ Cực Chill</div>
     <h1>Tọa Độ Ký Ức</h1>
-    <p id="introText"></p>
-    <button class="btn-start hidden" id="startBtn">Lên Đường Khám Phá Ngay! 🚀</button>
+    <button class="btn-start" id="startBtn">Lên Đường Khám Phá Ngay! 🚀</button>
   </div>
 </section>
 
@@ -313,24 +301,24 @@ textarea.field{min-height:100px;resize:vertical}
       <span class="search-icon">🔍</span>
       <input class="search" id="search" type="search" data-i18n-ph="search" placeholder="Tìm địa danh cực nhanh...">
     </div>
-    <div class="small-label" data-i18n="filters">LỌC KHU VỰC & VIBE</div>
-    <div class="filters" id="filters">
-      <button class="filter active" data-filter="all" data-i18n="fAll">Tất cả ✨</button>
-      <button class="filter" data-filter="Q" data-i18n="fQ">Quốc gia 🏛️</button>
-      <button class="filter" data-filter="T" data-i18n="fT">Thành phố 🏙️</button>
-      <button class="filter" data-filter="V" data-i18n="fC">Văn hóa 🛶</button>
-    </div>
     <nav class="side-menu">
-      <button class="menu-btn active" data-page="map"><span class="menu-icon">🗺️</span><span data-i18n="map">Bản đồ</span></button>
-      <button class="menu-btn" data-page="journey"><span class="menu-icon">🎒</span><span data-i18n="journey">Hành trình</span><span class="count" id="journeyCount">0</span></button>
-      <button class="menu-btn" data-page="badges"><span class="menu-icon">🏅</span><span data-i18n="badges">Huy hiệu</span><span class="count" id="badgeCount">0/5</span></button>
-      <button class="menu-btn" data-page="notes"><span class="menu-icon">📔</span><span data-i18n="notes">Sổ tay</span></button>
-      <button class="menu-btn" data-page="history"><span class="menu-icon">🕰️</span><span data-i18n="history">Lịch sử</span></button>
+      <button class="menu-btn active" data-page="map">
+        <span class="menu-icon">🗺️</span><span data-i18n="map">Bản đồ</span>
+      </button>
+      <a href="https://nghiem241208-code.github.io/Tro-choi-di-san/" target="_blank" rel="noopener noreferrer" class="menu-btn">
+        <span class="menu-icon">🎮</span><span data-i18n="game">Trò chơi</span>
+      </a>
+      <a href="https://heyzine.com/flip-book/071f2c4e68.html" target="_blank" rel="noopener noreferrer" class="menu-btn">
+        <span class="menu-icon">📖</span><span data-i18n="vnHeritage">Di sản Việt Nam</span>
+      </a>
+      <a href="https://heyzine.com/flip-book/f351e67ee2.html" target="_blank" rel="noopener noreferrer" class="menu-btn">
+        <span class="menu-icon">🌾</span><span data-i18n="ctHeritage">Di sản Cần Thơ</span>
+      </a>
     </nav>
     <div class="progress-card">
       <strong><span>🌱</span><span data-i18n="progress">Tiến độ check-in</span></strong>
       <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-      <div class="progress-text" id="progressText">0/22 địa điểm đã quẩy qua</div>
+      <div class="progress-text" id="progressText">0/22 địa điểm đã check-in qua</div>
     </div>
   </aside>
 
@@ -341,19 +329,18 @@ textarea.field{min-height:100px;resize:vertical}
           <h2 id="cityTitle">Cần Thơ gọi, team mình xuất phát! 🌳</h2>
           <p id="citySubtitle">Chạm trực tiếp vào các địa điểm trên bản đồ để khám phá.</p>
         </div>
-        <div class="tip" id="tipBox">⚡ Bản đồ thuần khiết — Không che chữ, không viền thừa</div>
       </div>
       <div class="map-frame">
         <div class="map-canvas" id="mapCanvas">
           <img class="map-image"
-            src="https://i.postimg.cc/sXrpXMTj/Can-Tho-Heritage-Map-Adventure.png"
+            src="Watercolour Map of Cần Thơ Heritage Sites.png"
             alt="Bản đồ di sản Cần Thơ">
-          <!-- Vùng chạm tàng hình hoàn toàn không che chữ/viền -->
+          
           <div id="hotspots"></div>
         </div>
       </div>
       <div class="map-legend">
-        <span id="legendTxt">Giao diện bản đồ gốc sắc nét, chạm vào đâu mở ngay trạm đó.</span>
+        <span id="legendTxt"> Chạm vào đâu mở ngay trạm đó.</span>
       </div>
     </section>
     <section class="subpage hidden" id="otherPage"></section>
@@ -440,14 +427,14 @@ const MAPS = {
 /* ====== TỪ ĐIỂN SONG NGỮ ====== */
 const I18N = {
  vi:{
-  explore:"🌿 Khám Phá", filters:"LỌC KHU VỰC & VIBE", search:"Tìm địa danh cực nhanh...",
-  fAll:"Tất cả ✨", fQ:"Quốc gia 🏛️", fT:"Thành phố 🏙️", fC:"Văn hóa 🛶",
-  map:"Bản đồ", journey:"Hành trình", badges:"Huy hiệu", notes:"Sổ tay", history:"Lịch sử", progress:"Tiến độ check-in",
+  explore:"🌿 Khám Phá", search:"Tìm địa danh cực nhanh...",
+  map:"Bản đồ", game:"Trò chơi", vnHeritage:"Di sản Việt Nam", ctHeritage:"Di sản Cần Thơ",
+  journey:"Hành trình", badges:"Huy hiệu", notes:"Sổ tay", history:"Lịch sử", progress:"Tiến độ check-in",
   prog:n=>`${n}/22 địa điểm đã quẩy qua`, cityTitle:"Cần Thơ gọi, team mình xuất phát! 🌳",
   citySub:"Chạm trực tiếp vào các địa điểm trên bản đồ để khám phá.", tip:"⚡ Bản đồ thuần khiết — Không che chữ, không viền thừa",
   legend:"Giao diện bản đồ gốc sắc nét, chạm vào đâu mở ngay trạm đó.", footer:"Tọa Độ Ký Ức · Thắp lửa đam mê di sản tuổi trẻ 🌿",
   tag:"Chạm di sản – Sống trọn từng khoảnh khắc ✨", mapBtn:"📍 Bản đồ", introLabel:"Vibe Cần Thơ Cực Chill",
-  introText:"Khám phá 22 trạm di sản Cần Thơ theo cách cực chill và mượt mà nhất!", start:"Lên Đường Khám Phá Ngay! 🚀",
+  start:"Lên Đường Khám Phá Ngay! 🚀",
   dossier:"Hồ sơ trạm dừng", storyH:"📖 Câu chuyện lịch sử", locate:"📍 Định vị trạm", tipH:"💡 Mẹo ghé thăm", quizT:"🧠 Thử thách kiến thức nhanh",
   noteH:"✍️ Nhật ký cảm xúc cá nhân", notePh:"Ghi lại kỷ niệm hoặc suy nghĩ của bạn tại đây...", saveNote:"💌 Lưu ghi chú",
   checkin:"🌿 Check-in ngay", checked:"✓ Đã check-in (Hủy)", quizOk:"🎉 Chính xác hoàn hảo!", quizNo:"😅 Suýt đúng rồi, thử lại sau nhé!",
@@ -473,14 +460,14 @@ const I18N = {
    su:"Nên đọc bảng thông tin tại chỗ và ghi lại cảm nhận vào sổ tay — đây là nơi để biết ơn và ghi nhớ."}
  },
  en:{
-  explore:"🌿 Explore", filters:"FILTER BY AREA & VIBE", search:"Search a place quickly...",
-  fAll:"All ✨", fQ:"National 🏛️", fT:"City 🏙️", fC:"Culture 🛶",
-  map:"Map", journey:"Journey", badges:"Badges", notes:"Notebook", history:"History", progress:"Check-in progress",
+  explore:"🌿 Explore", search:"Search a place quickly...",
+  map:"Map", game:"Game", vnHeritage:"Vietnam Heritage", ctHeritage:"Can Tho Heritage",
+  journey:"Journey", badges:"Badges", notes:"Notebook", history:"History", progress:"Check-in progress",
   prog:n=>`${n}/22 places visited`, cityTitle:"Can Tho is calling — let's go! 🌳",
   citySub:"Tap any place on the map to explore it.", tip:"⚡ Clean map — no labels covered, no extra borders",
   legend:"Original sharp map — tap anywhere to open that station.", footer:"Memory Coordinates · Sparking young passion for heritage 🌿",
   tag:"Touch heritage – live every moment ✨", mapBtn:"📍 Map", introLabel:"Can Tho Chill Vibes",
-  introText:"Explore 22 heritage stations of Can Tho in the chillest, smoothest way!", start:"Start Exploring! 🚀",
+  start:"Start Exploring! 🚀",
   dossier:"Station file", storyH:"📖 Historical story", locate:"📍 Location", tipH:"💡 Visiting tip", quizT:"🧠 Quick knowledge challenge",
   noteH:"✍️ Personal feelings journal", notePh:"Write down your memories or thoughts here...", saveNote:"💌 Save note",
   checkin:"🌿 Check in now", checked:"✓ Checked in (Undo)", quizOk:"🎉 Perfectly correct!", quizNo:"😅 So close — try again later!",
@@ -518,82 +505,82 @@ const QUIZ_DEFAULT={
  den:{q:"Đền thờ danh nhân nhằm mục đích gì?|Why are memorial temples built for notable figures?",o:"Tưởng nhớ công lao và đạo đức|Remember their contributions and virtue~Kinh doanh|Business~Giải trí|Entertainment",a:0}
 };
 const places=[
- {id:1,c:"Q",k:"dinh",cu:1,x:7.1,y:26.4,n:"Đình Bình Thủy|Binh Thuy Communal House",sub:"Ngôi đình cổ hơn 180 năm tuổi|A communal house over 180 years old",
+ {id:1,c:"Q",k:"dinh",cu:1,x:11.5,y:16.0,n:"Đình Bình Thủy|Binh Thuy Communal House",sub:"Ngôi đình cổ hơn 180 năm tuổi|A communal house over 180 years old",
   st:"Đình Bình Thủy được xây dựng năm 1844, là trung tâm tín ngưỡng của cư dân vùng Bình Thủy. Mái ngói âm dương, các cấu kiện gỗ chạm tinh xảo và lễ hội Kỳ yên hằng năm làm nên nét đặc sắc của một ngôi đình Nam Bộ.|Built in 1844, Binh Thuy Communal House has long been the spiritual heart of the local community. Its yin-yang tiled roof, finely carved timber and the yearly Ky Yen festival make it a classic southern communal house.",
   f:"Xây dựng năm 1844|Built in 1844",ad:"Phường Bình Thủy, Cần Thơ|Binh Thuy Ward, Can Tho",
   q:{q:"Đình Bình Thủy được xây dựng vào năm nào?|In what year was Binh Thuy Communal House built?",o:"1744~1844~1944",a:1}},
- {id:2,c:"Q",k:"chua",cu:1,x:24.5,y:27.1,n:"Chùa Long Quang|Long Quang Pagoda",sub:"Ngôi chùa kiến trúc nghệ thuật|An architectural-art pagoda",
+ {id:2,c:"Q",k:"chua",cu:1,x:28.5,y:15.5,n:"Chùa Long Quang|Long Quang Pagoda",sub:"Ngôi chùa kiến trúc nghệ thuật|An architectural-art pagoda",
   st:"Chùa Long Quang là cơ sở Phật giáo lâu đời của Cần Thơ, được xếp hạng di tích quốc gia về kiến trúc nghệ thuật. Không gian thanh tịnh cùng nhiều hiện vật quý lưu giữ đời sống tâm linh của nhiều thế hệ.|Long Quang is a long-standing Buddhist pagoda in Can Tho, ranked a national site for its architecture and art. Its serene space and precious artefacts preserve generations of spiritual life.",
   f:"Di tích kiến trúc nghệ thuật|Architectural-art site",
   q:{q:"Chùa Long Quang được xếp hạng theo giá trị nào?|Under which value is Long Quang ranked?",o:"Kiến trúc nghệ thuật|Architecture and art~Khảo cổ|Archaeology~Thắng cảnh thiên nhiên|Natural scenery",a:0}},
- {id:3,c:"Q",k:"mieu",cu:1,x:40.7,y:23,n:"Chùa Ông|Ong Pagoda (Quang Trieu Assembly Hall)",sub:"Hội quán rực rỡ của người Hoa|The vivid assembly hall of the Hoa community",
+ {id:3,c:"Q",k:"mieu",cu:1,x:43.8,y:15.8,n:"Chùa Ông|Ong Pagoda (Quang Trieu Assembly Hall)",sub:"Hội quán rực rỡ của người Hoa|The vivid assembly hall of the Hoa community",
   st:"Chùa Ông (Quảng Triệu hội quán) do cộng đồng người Hoa lập từ cuối thế kỷ 19, thờ Quan Công. Sắc đỏ, gỗ chạm và phù điêu gốm tạo nên vẻ đẹp rực rỡ giữa trung tâm Ninh Kiều.|Founded by the Hoa community in the late 19th century, Ong Pagoda worships Quan Cong. Red tones, carved wood and ceramic reliefs make it vivid in the heart of Ninh Kieu.",
   f:"Cuối thế kỷ 19|Late 19th century",ad:"32 Hai Bà Trưng, Ninh Kiều, Cần Thơ|32 Hai Ba Trung, Ninh Kieu, Can Tho",
   q:{q:"Chùa Ông chủ yếu thờ vị nào?|Who is mainly worshipped at Ong Pagoda?",o:"Trần Hưng Đạo|Tran Hung Dao~Phật Bà|Guanyin~Quan Công|Quan Cong",a:2}},
- {id:4,c:"Q",k:"nha",cu:1,x:54.4,y:26,n:"Nhà cổ Bình Thủy (Nhà thờ họ Dương)|Binh Thuy Ancient House (Duong Family Shrine)",sub:"Kiến trúc Đông – Tây giao hòa|Where East meets West in architecture",
+ {id:4,c:"Q",k:"nha",cu:1,x:59.5,y:16.8,n:"Nhà cổ Bình Thủy (Nhà thờ họ Dương)|Binh Thuy Ancient House (Duong Family Shrine)",sub:"Kiến trúc Đông – Tây giao hòa|Where East meets West in architecture",
   st:"Ngôi nhà xây năm 1870 kết hợp kiến trúc Pháp, Hoa và Việt. Gia tộc họ Dương gìn giữ đồ gỗ, hoành phi và nhiều kỷ vật qua nhiều thế hệ — ngôi nhà từng xuất hiện trong phim điện ảnh quốc tế.|Built in 1870, the house blends French, Chinese and Vietnamese architecture. The Duong family has preserved its furniture, lacquered boards and keepsakes for generations, and it has appeared in an international film.",
   f:"Xây dựng năm 1870|Built in 1870",ad:"144 Bùi Hữu Nghĩa, Bình Thủy, Cần Thơ|144 Bui Huu Nghia, Binh Thuy, Can Tho",
   q:{q:"Nhà cổ Bình Thủy xây vào năm nào?|When was Binh Thuy Ancient House built?",o:"1870~1920~1975",a:0}},
- {id:5,c:"Q",k:"su",x:68.1,y:26.5,n:"Cơ quan đặc ủy An Nam Cộng sản Đảng|Special Committee Office of the Annam Communist Party",sub:"Dấu mốc lịch sử 1929–1930|A historic milestone, 1929–1930",
+ {id:5,c:"Q",k:"su",x:11.5,y:31.5,n:"Cơ quan đặc ủy An Nam Cộng sản Đảng|Special Committee Office of the Annam Communist Party",sub:"Dấu mốc lịch sử 1929–1930|A historic milestone, 1929–1930",
   st:"Nơi ghi dấu hoạt động của An Nam Cộng sản Đảng — một trong ba tổ chức cộng sản ra đời năm 1929, tiền thân của Đảng Cộng sản Việt Nam.|This site marks the activities of the Annam Communist Party, one of three communist organisations founded in 1929 that led to the Communist Party of Vietnam.",
   f:"Giai đoạn 1929–1930|Period 1929–1930",
   q:{q:"Cơ quan đặc ủy hoạt động trong giai đoạn nào?|In which period did the Special Committee operate?",o:"1929–1930~1975–1976~2000–2001",a:0}},
- {id:6,c:"Q",k:"chua",cu:1,x:8,y:39,n:"Chùa Nam Nhã|Nam Nha Pagoda",sub:"Di tích lịch sử – văn hóa|A historical and cultural site",
+ {id:6,c:"Q",k:"chua",cu:1,x:36.0,y:32.0,n:"Chùa Nam Nhã|Nam Nha Pagoda",sub:"Di tích lịch sử – văn hóa|A historical and cultural site",
   st:"Chùa Nam Nhã là di tích lịch sử – văn hóa, gắn với đời sống tín ngưỡng và tinh thần yêu nước của người dân địa phương qua nhiều giai đoạn.|Nam Nha Pagoda is a historical and cultural site tied to local belief and patriotism across many periods.",
   f:"Di tích lịch sử – văn hóa|Historical-cultural site",
   q:{q:"Chùa Nam Nhã thuộc nhóm di tích nào?|Which group of heritage does Nam Nha belong to?",o:"Khảo cổ|Archaeology~Kiến trúc nghệ thuật|Architecture and art~Lịch sử – văn hóa|History and culture",a:2}},
- {id:7,c:"Q",k:"mo",x:31.5,y:41.7,n:"Mộ nhà thơ Phan Văn Trị|Tomb of poet Phan Van Tri",sub:"Ngòi bút yêu nước đất Nam Bộ|A patriotic pen of the South",
+ {id:7,c:"Q",k:"mo",x:68.5,y:33.0,n:"Mộ nhà thơ Phan Văn Trị|Tomb of poet Phan Van Tri",sub:"Ngòi bút yêu nước đất Nam Bộ|A patriotic pen of the South",
   st:"Phan Văn Trị (1830–1910) là nhà thơ yêu nước nổi tiếng với cuộc bút chiến bằng thơ chống lại Tôn Thọ Tường, dùng ngôn từ để giữ khí tiết trước thời cuộc.|Phan Van Tri (1830–1910) was a patriotic poet famed for his verse duel with Ton Tho Tuong, using words to defend his principles in turbulent times.",
   f:"1830–1910|1830–1910",
   q:{q:"Phan Văn Trị nổi tiếng với hoạt động nào?|What is Phan Van Tri known for?",o:"Vẽ tranh|Painting~Bút chiến bằng thơ|Verse duels~Làm gốm|Pottery",a:1}},
- {id:8,c:"Q",k:"mo",x:46.4,y:41.5,n:"Mộ thủ khoa Bùi Hữu Nghĩa|Tomb of laureate Bui Huu Nghia",sub:"Thủ khoa tài hoa, liêm chính|A gifted and upright top scholar",
+ {id:8,c:"Q",k:"mo",x:59.5,y:47.5,n:"Mộ thủ khoa Bùi Hữu Nghĩa|Tomb of laureate Bui Huu Nghia",sub:"Thủ khoa tài hoa, liêm chính|A gifted and upright top scholar",
   st:"Bùi Hữu Nghĩa (1807–1872) đỗ thủ khoa năm 1835, nổi tiếng với vở tuồng Kim Thạch Kỳ Duyên và được người dân Nam Bộ kính trọng vì tài học, đức liêm chính.|Bui Huu Nghia (1807–1872) topped the 1835 exam and is known for the play Kim Thach Ky Duyen; southerners respect him for his learning and integrity.",
   f:"1807–1872|1807–1872",ad:"Phường Bình Thủy, Cần Thơ|Binh Thuy Ward, Can Tho",
   q:{q:"Tác phẩm tiêu biểu của ông là gì?|What is his best-known work?",o:"Tấm Cám|Tam Cam~Truyện Kiều|The Tale of Kieu~Kim Thạch Kỳ Duyên|Kim Thach Ky Duyen",a:2}},
- {id:9,c:"Q",k:"chua",cu:1,x:59.8,y:42.4,n:"Chùa Hội Linh|Hoi Linh Pagoda",sub:"Ngôi cổ tự giàu ký ức|An old pagoda rich in memory",
+ {id:9,c:"Q",k:"chua",cu:1,x:52.5,y:31.8,n:"Chùa Hội Linh|Hoi Linh Pagoda",sub:"Ngôi cổ tự giàu ký ức|An old pagoda rich in memory",
   st:"Chùa Hội Linh là ngôi chùa lâu đời, gắn với đời sống tâm linh và ký ức lịch sử của cộng đồng địa phương.|Hoi Linh is an old pagoda tied to the spiritual life and historical memory of the local community.",
   f:"Di tích lịch sử – văn hóa|Historical-cultural site",
   q:null},
- {id:10,c:"Q",k:"su",x:78.4,y:44.4,n:"Khám lớn Cần Thơ|Can Tho Grand Prison",sub:"Chứng tích của ý chí kiên trung|A witness to unyielding resolve",
+ {id:10,c:"Q",k:"su",x:37.8,y:49.0,n:"Khám lớn Cần Thơ|Can Tho Grand Prison",sub:"Chứng tích của ý chí kiên trung|A witness to unyielding resolve",
   st:"Nhà tù do thực dân Pháp lập, nơi giam giữ nhiều chiến sĩ yêu nước. Ngày nay nơi đây là chứng tích về ý chí kiên trung của lớp người đi trước.|A prison set up by the French colonial authorities that held many patriots. Today it stands as a witness to the steadfast will of earlier generations.",
   f:"Di tích lịch sử cách mạng|Revolutionary history site",ad:"Ninh Kiều, Cần Thơ|Ninh Kieu, Can Tho",
   q:{q:"Khám lớn Cần Thơ là chứng tích về điều gì?|What does the Grand Prison bear witness to?",o:"Ý chí kiên trung của chiến sĩ cách mạng|The steadfast will of revolutionaries~Một khu chợ cổ|An old market~Một bến tàu du lịch|A tourist pier",a:0}},
- {id:11,c:"T",k:"den",x:13.1,y:53.1,n:"Đền thờ Hải Thượng Lãn Ông|Hai Thuong Lan Ong Temple",sub:"Tôn vinh y đức sáng ngời|Honouring shining medical virtue",
+ {id:11,c:"T",k:"den",x:13.8,y:47.5,n:"Đền thờ Hải Thượng Lãn Ông|Hai Thuong Lan Ong Temple",sub:"Tôn vinh y đức sáng ngời|Honouring shining medical virtue",
   st:"Nơi tưởng nhớ đại danh y Lê Hữu Trác (1720–1791), tác giả bộ Hải Thượng y tông tâm lĩnh — công trình đồ sộ của y học cổ truyền Việt Nam.|A place to remember the great physician Le Huu Trac (1720–1791), author of Hai Thuong Y Tong Tam Linh, a monumental work of Vietnamese traditional medicine.",
   f:"Lê Hữu Trác (1720–1791)|Le Huu Trac (1720–1791)",
   q:{q:"Hải Thượng Lãn Ông nổi tiếng ở lĩnh vực nào?|What field is Hai Thuong Lan Ong famous for?",o:"Đóng tàu|Shipbuilding~Y học cổ truyền|Traditional medicine~Lập trình|Programming",a:1}},
- {id:12,c:"T",k:"su",x:30.9,y:56.3,n:"Chi bộ Cờ Đỏ|Co Do Party Cell",sub:"Địa chỉ đỏ vùng Cờ Đỏ|A red address of Co Do",
+ {id:12,c:"T",k:"su",x:11.2,y:64.5,n:"Chi bộ Cờ Đỏ|Co Do Party Cell",sub:"Địa chỉ đỏ vùng Cờ Đỏ|A red address of Co Do",
   st:"Di tích ghi dấu hoạt động của chi bộ Đảng ở vùng Cờ Đỏ, nơi người dân kiên cường bám đất, bám làng trong kháng chiến.|This site marks the activities of the Party cell in Co Do, where residents held on to their land and villages during the resistance.",
   f:"Di tích lịch sử cách mạng|Revolutionary history site",q:null},
- {id:13,c:"T",k:"su",x:47.5,y:56.5,n:"Chiến thắng ông Hào|Ong Hao Victory Site",sub:"Chiến thắng của quân dân địa phương|A victory of local troops and people",
+ {id:13,c:"T",k:"su",x:82.5,y:17.5,n:"Chiến thắng ông Hào|Ong Hao Victory Site",sub:"Chiến thắng của quân dân địa phương|A victory of local troops and people",
   st:"Địa điểm ghi dấu chiến thắng của quân và dân địa phương trong kháng chiến, nhắc chúng ta về tinh thần đoàn kết của người dân miền Tây.|A site marking a victory of local troops and civilians during the resistance, reminding us of the solidarity of the Mekong Delta people.",
   f:"Di tích lịch sử cách mạng|Revolutionary history site",q:null},
- {id:14,c:"T",k:"dinh",cu:1,x:65.3,y:56.4,n:"Đình Thới An|Thoi An Communal House",sub:"Nét làng quê Nam Bộ|A touch of southern village life",
+ {id:14,c:"T",k:"dinh",cu:1,x:85.5,y:32.5,n:"Đình Thới An|Thoi An Communal House",sub:"Nét làng quê Nam Bộ|A touch of southern village life",
   st:"Đình Thới An là không gian sinh hoạt tín ngưỡng và cộng đồng của cư dân địa phương, nơi lưu giữ nếp làng và những lễ hội truyền thống.|Thoi An Communal House is the belief and community space of local residents, keeping village customs and traditional festivals alive.",
   f:"Di tích cấp thành phố|City-level site",q:null},
- {id:15,c:"T",k:"su",x:80.1,y:59.9,n:"Căn cứ Vườn Mận|Vuon Man Base",sub:"Căn cứ cách mạng giữa miền sông nước|A revolutionary base amid the waterways",
+ {id:15,c:"T",k:"su",x:32.2,y:63.5,n:"Căn cứ Vườn Mận|Vuon Man Base",sub:"Căn cứ cách mạng giữa miền sông nước|A revolutionary base amid the waterways",
   st:"Căn cứ cách mạng nơi cán bộ và nhân dân từng bám trụ hoạt động giữa sông rạch, vườn cây của miền Tây.|A revolutionary base where cadres and villagers operated among the rivers, canals and orchards of the Mekong Delta.",
   f:"Di tích lịch sử cách mạng|Revolutionary history site",q:null},
- {id:16,c:"T",k:"chua",cu:1,x:16.4,y:69.2,n:"Chùa Pôthi Somrôn|Pothi Somron Pagoda",sub:"Chùa Khmer Nam tông rực rỡ|A vivid Khmer Theravada pagoda",
+ {id:16,c:"T",k:"chua",cu:1,x:84.5,y:51.5,n:"Chùa Pôthi Somrôn|Pothi Somron Pagoda",sub:"Chùa Khmer Nam tông rực rỡ|A vivid Khmer Theravada pagoda",
   st:"Chùa Khmer theo Phật giáo Nam tông với mái cong nhiều tầng, màu sắc rực rỡ; là trung tâm của các lễ hội như Chol Chnam Thmay và Ok Om Bok.|A Khmer Theravada pagoda with multi-tiered curved roofs and bright colours, the centre of festivals such as Chol Chnam Thmay and Ok Om Bok.",
   f:"Văn hóa Khmer|Khmer culture",
   q:{q:"Chùa Pôthi Somrôn thuộc cộng đồng dân tộc nào?|Which community does Pothi Somron belong to?",o:"Khmer~Chăm|Cham~Hoa|Hoa",a:0}},
- {id:17,c:"T",k:"su",x:32.7,y:70.5,n:"Trận Lê Bình|Le Binh Battle Site",sub:"Dấu tích một trận đánh|Traces of a battle",
+ {id:17,c:"T",k:"su",x:20.8,y:82.5,n:"Trận Lê Bình|Le Binh Battle Site",sub:"Dấu tích một trận đánh|Traces of a battle",
   st:"Di tích ghi dấu trận đánh Lê Bình của quân và dân địa phương, giúp thế hệ trẻ hiểu thêm về những năm tháng kháng chiến.|A site commemorating the Le Binh battle by local troops and civilians, helping young people understand the years of resistance.",
   f:"Di tích lịch sử cách mạng|Revolutionary history site",q:null},
- {id:18,c:"T",k:"dinh",cu:1,x:49.4,y:71.8,n:"Đình Thuận Hưng|Thuan Hung Communal House",sub:"Không gian làng xã truyền thống|A traditional village space",
+ {id:18,c:"T",k:"dinh",cu:1,x:51.2,y:60.8,n:"Đình Thuận Hưng|Thuan Hung Communal House",sub:"Không gian làng xã truyền thống|A traditional village space",
   st:"Đình Thuận Hưng là nơi cư dân địa phương cúng tế, hội họp và giữ gìn phong tục truyền thống của làng.|Thuan Hung Communal House is where villagers hold ceremonies and meetings and keep local customs alive.",
   f:"Di tích cấp thành phố|City-level site",q:null},
- {id:19,c:"T",k:"mieu",cu:1,x:69.2,y:74.4,n:"Linh Sơn Cổ Miếu|Linh Son Ancient Shrine",sub:"Ngôi miếu cổ yên tĩnh|A quiet ancient shrine",
+ {id:19,c:"T",k:"mieu",cu:1,x:43.2,y:78.5,n:"Linh Sơn Cổ Miếu|Linh Son Ancient Shrine",sub:"Ngôi miếu cổ yên tĩnh|A quiet ancient shrine",
   st:"Ngôi miếu cổ gắn với tín ngưỡng dân gian của cư dân địa phương, mang lại không gian tĩnh lặng để tìm hiểu đời sống tâm linh vùng đất này.|An ancient shrine tied to the folk beliefs of local residents, offering a calm space to learn about the region's spiritual life.",
   f:"Di tích cấp thành phố|City-level site",q:null},
- {id:20,c:"T",k:"dinh",cu:1,x:21,y:81.5,n:"Đình Thường Thạnh|Thuong Thanh Communal House",sub:"Nơi gìn giữ lễ hội làng|Keeper of village festivals",
+ {id:20,c:"T",k:"dinh",cu:1,x:60.5,y:78.0,n:"Đình Thường Thạnh|Thuong Thanh Communal House",sub:"Nơi gìn giữ lễ hội làng|Keeper of village festivals",
   st:"Đình Thường Thạnh là điểm sinh hoạt văn hóa tín ngưỡng của cộng đồng, nơi diễn ra các lễ cúng truyền thống hằng năm.|Thuong Thanh Communal House is a cultural and belief centre of the community, hosting traditional annual ceremonies.",
   f:"Di tích cấp thành phố|City-level site",q:null},
- {id:21,c:"T",k:"mieu",cu:1,x:37.4,y:83.5,n:"Hiệp Thiên Cung|Hiep Thien Cung Temple",sub:"Cung miếu tín ngưỡng dân gian|A folk-belief temple",
+ {id:21,c:"T",k:"mieu",cu:1,x:76.2,y:72.5,n:"Hiệp Thiên Cung|Hiep Thien Cung Temple",sub:"Cung miếu tín ngưỡng dân gian|A folk-belief temple",
   st:"Hiệp Thiên Cung là cơ sở tín ngưỡng dân gian của cộng đồng, nổi bật với kiến trúc cung miếu truyền thống và nếp sinh hoạt tâm linh.|Hiep Thien Cung is a folk-belief temple known for its traditional temple architecture and spiritual life.",
   f:"Di tích cấp thành phố|City-level site",q:null},
- {id:22,c:"T",k:"su",x:67.5,y:88.7,n:"Chiến thắng ông Đưa 1960|Ong Dua Victory 1960",sub:"Dấu mốc năm 1960|A milestone of 1960",
+ {id:22,c:"T",k:"su",x:90.0,y:78.5,n:"Chiến thắng ông Đưa 1960|Ong Dua Victory 1960",sub:"Dấu mốc năm 1960|A milestone of 1960",
   st:"Di tích ghi dấu chiến thắng ông Đưa năm 1960 của quân và dân địa phương, một dấu mốc trong phong trào đấu tranh ở Cần Thơ.|A site marking the 1960 Ong Dua victory by local troops and people, a milestone of the struggle in Can Tho.",
   f:"Năm 1960|Year 1960",
   q:{q:"Chiến thắng ông Đưa diễn ra vào năm nào?|In what year was the Ong Dua victory?",o:"1960~1860~2060",a:0}}
@@ -608,7 +595,7 @@ const badgeLevels=[
 
 const STORE="tdkuc_state_v2";
 let lang=localStorage.getItem("tdkuc_lang")||"vi";
-let user=null,currentPage="map",currentFilter="all",selectedPlace=null,authMode="login",toastTimer=null;
+let user=null,currentPage="map",selectedPlace=null,authMode="login",toastTimer=null;
 let localState={visited:[],times:{},notes:{}};
 try{const s=JSON.parse(localStorage.getItem(STORE)||"null");if(s)localState={...localState,...s};}catch{}
 
@@ -636,13 +623,12 @@ function applyLang(){
  document.querySelectorAll("[data-i18n]").forEach(e=>{const v=t(e.dataset.i18n);if(typeof v==="string")e.textContent=v;});
  document.querySelectorAll("[data-i18n-ph]").forEach(e=>e.placeholder=t(e.dataset.i18nPh));
  const map={cityTitle:"cityTitle",citySubtitle:"citySub",tipBox:"tip",legendTxt:"legend",footerNote:"footer",introLabel:"introLabel",startBtn:"start",
-  saveNote:"saveNote",authTitle:"authTitle",authDesc:"authDesc",authCancel:"later",lblEmail:"email",lblPass:"pass",brandTag:"tag",mapBtn:"mapBtn"};
+  saveNote:"saveNote",authTitle:"authT",authDesc:"authD",authCancel:"later",lblEmail:"email",lblPass:"pass",brandTag:"tag",mapBtn:"mapBtn"};
  for(const [id,k] of Object.entries(map)){const e=$(id);if(e)e.textContent=t(k);}
  $("authPassword").placeholder=t("passPh");
  $("authSubmit").textContent=authMode==="login"?t("login"):t("signup");
  $("authToggle").textContent=authMode==="login"?t("toSignup"):t("toLogin");
  $("langBtn").textContent=lang==="vi"?"🌐 VI | en":"🌐 vi | EN";
- $("introLang").textContent=$("langBtn").textContent;
  $("detailHeaderTitle").textContent=t("dossier");
  updateProgress();renderHotspots();renderAccount();
  if(!$("detailOverlay").classList.contains("hidden")&&selectedPlace)openDetail(selectedPlace,true);
@@ -650,18 +636,8 @@ function applyLang(){
 }
 function setLang(l){lang=l;localStorage.setItem("tdkuc_lang",l);applyLang();}
 $("langBtn").addEventListener("click",()=>setLang(lang==="vi"?"en":"vi"));
-$("introLang").addEventListener("click",()=>{setLang(lang==="vi"?"en":"vi");restartIntro();});
 
 /* ====== INTRO ====== */
-let introIndex=0,introTimer=null;
-function restartIntro(){
- clearInterval(introTimer);introIndex=0;$("introText").textContent="";$("startBtn").classList.add("hidden");
- const txt=t("introText");
- introTimer=setInterval(()=>{
-  $("introText").textContent=txt.slice(0,++introIndex);
-  if(introIndex>=txt.length){clearInterval(introTimer);$("startBtn").classList.remove("hidden");}
- },25);
-}
 $("startBtn").addEventListener("click",()=>{
  $("intro").classList.add("hidden");
  $("topbar").classList.remove("hidden");
@@ -671,32 +647,23 @@ $("startBtn").addEventListener("click",()=>{
 });
 
 /* ====== BẢN ĐỒ ====== */
-function matchFilter(p){
- return currentFilter==="all"||(currentFilter==="Q"&&p.c==="Q")||(currentFilter==="T"&&p.c==="T")||(currentFilter==="V"&&p.cu);
-}
 function renderHotspots(){
  const layer=$("hotspots");layer.innerHTML="";
  const query=$("search").value.trim().toLocaleLowerCase(lang);
  places.filter(p=>{
   const hay=(P(p.n).join(" ")).toLocaleLowerCase(lang);
-  return hay.includes(query)&&matchFilter(p);
+  return hay.includes(query);
  }).forEach(p=>{
   const b=document.createElement("button");
   b.className="hotspot-area"+(localState.visited.includes(p.id)?" visited":"");
   b.style.setProperty("--x",p.x+"%");b.style.setProperty("--y",p.y+"%");
-  b.style.setProperty("--w","8%");b.style.setProperty("--h","7%");
+  b.style.setProperty("--w","13%");b.style.setProperty("--h","12%");
   b.title=nm(p);
   b.addEventListener("click",()=>openDetail(p.id));
   layer.appendChild(b);
  });
 }
 $("search").addEventListener("input",renderHotspots);
-$("filters").addEventListener("click",e=>{
- const b=e.target.closest("[data-filter]");if(!b)return;
- currentFilter=b.dataset.filter;
- document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
- renderHotspots();
-});
 
 /* ====== CHI TIẾT ====== */
 function placeholderHTML(p){return `<div class="ph"><span>${KIND_EMOJI[p.k]}</span><small>${escapeHTML(t("imgHint"))}</small></div>`;}
@@ -814,10 +781,10 @@ function bindPageActions(){
 }
 function updateProgress(){
  const n=localState.visited.length;
- $("journeyCount").textContent=n;
- $("progressText").textContent=t("prog")(n);
- $("progressBar").style.width=(n/22*100)+"%";
- $("badgeCount").textContent=badgeLevels.filter(b=>n>=b.n).length+"/5";
+ if($("journeyCount")) $("journeyCount").textContent=n;
+ if($("progressText")) $("progressText").textContent=t("prog")(n);
+ if($("progressBar")) $("progressBar").style.width=(n/22*100)+"%";
+ if($("badgeCount")) $("badgeCount").textContent=badgeLevels.filter(b=>n>=b.n).length+"/5";
 }
 
 /* ====== TÀI KHOẢN ====== */
@@ -868,7 +835,6 @@ async function saveUserData(){
 }
 
 applyLang();
-restartIntro();
 </script>
 </body>
 </html>
